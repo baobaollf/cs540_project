@@ -1,12 +1,15 @@
 public class Time {
-    String timeStamp;
+    long timeStamp;
 
     Time() {
-        timeStamp = String.valueOf(System.currentTimeMillis());
+        timeStamp = System.currentTimeMillis();
     }
 
     public void updateTime() {
-        timeStamp = String.valueOf(System.currentTimeMillis());
+        timeStamp = System.currentTimeMillis();
     }
 
+    public long getTimeStamp() {
+        return timeStamp;
+    }
 }

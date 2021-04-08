@@ -6,7 +6,7 @@ public class ContentServer extends Server {
         super(IP);
     }
 
-    public String fetchContent(String id) {
+    public String fetchContent(int id) {
         return content + id;
     }
 }

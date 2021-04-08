@@ -1,10 +1,13 @@
-import java.util.List;
-
 public class SecurityObject {
 
     private String hashKey;
     private final Time time;
-    private String IP;
+    private String clientIP;
+
+    SecurityObject(String username, String password) {
+        this.time = new Time();
+        hashKey = String.valueOf(time.timeStamp + clientIP.hashCode() + username.hashCode() + password.hashCode());
+    }
 
     public String getHashKey() {
         return hashKey;
@@ -18,12 +21,7 @@ public class SecurityObject {
         time.updateTime();
     }
 
-
-
-    List<ContentServer> contentServers;
-
-    SecurityObject() {
-        this.time = new Time();
-        hashKey = String.valueOf(time.timeStamp.hashCode() + IP.hashCode());
+    public Time getTime(){
+        return time;
     }
 }

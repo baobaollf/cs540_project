@@ -1,14 +1,28 @@
 import java.util.List;
 
 public class Client {
-    SecurityObject securityObject;
 
     Response response;
-    String key;
 
-    Client(String key, List<AuthServer> otherClusters) {
-        response = new Response(otherClusters);
-        this.key = key;
+
+    Client() {
 
     }
+
+    Client(String key, List<AuthServer> otherClusters) {
+        response = new Response(key, otherClusters);
+
+    }
+
+    public Response getResponse() {
+        return response;
+    }
+
+    public void setResponse(Response response) {
+        this.response = response;
+    }
+
+
+
+
 }
