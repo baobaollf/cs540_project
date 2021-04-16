@@ -6,7 +6,7 @@ public class SecurityObject {
 
     SecurityObject(String username, String password) {
         this.time = new Time();
-        hashKey = String.valueOf(time.timeStamp + clientIP.hashCode() + username.hashCode() + password.hashCode());
+        hashKey = String.valueOf(time.timeStamp + username.hashCode() + password.hashCode());
     }
 
     public String getHashKey() {
@@ -21,7 +21,7 @@ public class SecurityObject {
         time.updateTime();
     }
 
-    public Time getTime(){
+    public Time getTime() {
         return time;
     }
 }

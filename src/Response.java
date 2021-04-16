@@ -1,5 +1,9 @@
 import java.util.List;
 
+/**
+ * Response object used to transmit information between Auth server and client
+ */
+
 public class Response {
 
     // other available clusters

@@ -1,17 +1,27 @@
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class AuthServer extends Server{
 
-    //    security key   object
-    //
+    //       security key   object
     private Map<String, SecurityObject> loggedInList;
     private List<ContentServer> contentServers;
     private Map<String, String> users;
 
+    public void setContentServers(List<ContentServer> contentServers) {
+        this.contentServers = contentServers;
+    }
+
+    public void setUsers(String username, String password) {
+        this.users.put(username, password);
+    }
+
     AuthServer(String IP) {
         super(IP);
+        users = new HashMap<>();
+        loggedInList = new HashMap<>();
     }
 
     /**
