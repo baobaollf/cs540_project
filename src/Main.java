@@ -1,4 +1,4 @@
-import com.sun.javaws.IconUtil;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +24,9 @@ public class Main {
         main.authServer1.setContentServers(contentServerList);
         main.authServer2.setContentServers(contentServerList2);
 
+        // TODO set nearby clusters
+
         main.authServer1.setUsers("user1", "password");
-
-
 
         main.client = new Client();
 
@@ -34,6 +34,11 @@ public class Main {
             System.out.println( main.client.getUsername() + " login success");
         }
 
+        // TODO: client request for content
+
+        // TODO: client re-auth
+
+        // TODO: client logout
 
     }
 
