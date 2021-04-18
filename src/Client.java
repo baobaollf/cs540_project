@@ -1,14 +1,32 @@
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.List;
 
 public class Client {
 
-    Response response;
-    AuthServer defaultServer;
-    String username;
-    String password;
-    Socket clientSocket;
-    Client() {
+    private Response response;
+    private AuthServer defaultServer;
+    private String username;
+    private String password;
+    private String line = "";
+    // initialize socket and input output streams
+    private Socket socket            = null;
+    private DataInputStream  input   = null;
+    private DataOutputStream out     = null;
+    Client(String address, int port) {
+        try {
+            socket = new Socket(address, port);
+            System.out.println("Connected to server");
+        }
+        catch (Exception e) {
+            System.out.println("Error!" + e);
+        }
+        while(!line.equals("quit")){
+
+        }
+
+
 
     }
 
