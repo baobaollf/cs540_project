@@ -24,7 +24,9 @@ public class Main {
         main.authServer1.setContentServers(contentServerList);
         main.authServer2.setContentServers(contentServerList2);
 
-        // TODO set nearby clusters
+        // TODO set nearby clusters: Li
+        main.authServer1.addNearByAuthServer(main.authServer2);
+        main.authServer2.addNearByAuthServer(main.authServer1);
 
         main.authServer1.setUsers("user1", "password");
 
@@ -34,11 +36,11 @@ public class Main {
             System.out.println( main.client.getUsername() + " login success");
         }
 
-        // TODO: client request for content
+        // TODO: client request for content: Cludio
 
-        // TODO: client re-auth
+        // TODO: client re-auth: Joe
 
-        // TODO: client logout
+        // TODO: client logout: Joe
 
     }
 

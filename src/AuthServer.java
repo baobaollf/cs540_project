@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,11 @@ public class AuthServer extends Server{
     private Map<String, SecurityObject> loggedInList;
     private List<ContentServer> contentServers;
     private Map<String, String> users;
+    private List<AuthServer> nearByAuthServers;
+
+    public void addNearByAuthServer(AuthServer authServer) {
+        this.nearByAuthServers.add(authServer);
+    }
 
     public void setContentServers(List<ContentServer> contentServers) {
         this.contentServers = contentServers;
@@ -22,7 +28,10 @@ public class AuthServer extends Server{
         super(IP);
         users = new HashMap<>();
         loggedInList = new HashMap<>();
+        nearByAuthServers = new ArrayList<>();
     }
+
+
 
     /**
      * helper function to determine if user has timed out
@@ -98,6 +107,7 @@ public class AuthServer extends Server{
             // TODO notify nearby clusters through backbone
         }
     }
+
 
 
 }
