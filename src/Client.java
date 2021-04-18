@@ -1,3 +1,4 @@
+import java.net.Socket;
 import java.util.List;
 
 public class Client {
@@ -6,6 +7,7 @@ public class Client {
     AuthServer defaultServer;
     String username;
     String password;
+    Socket clientSocket;
     Client() {
 
     }
@@ -43,5 +45,9 @@ public class Client {
 
     public String getUsername() {
         return this.username;
+    }
+
+    public void sendRequest(String request){
+        System.out.println("sending request for " + request);
     }
 }

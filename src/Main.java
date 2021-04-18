@@ -35,6 +35,8 @@ public class Main {
         }
 
         // TODO: client request for content
+        // client sends request to AS for content
+
 
         // TODO: client re-auth
 
