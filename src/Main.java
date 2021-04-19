@@ -6,12 +6,13 @@ import java.util.List;
 public class Main {
     AuthServer authServer1;
     AuthServer authServer2;
-    String address;
-    int port;
+
 
     Client client;
 
     public static void main(String[] args) {
+//        String address = args[0];
+//        String port = args[1];
         Main main = new Main();
 
         main.authServer1 = new AuthServer("0.0.0.0");
@@ -30,7 +31,7 @@ public class Main {
 
         main.authServer1.setUsers("user1", "password");
 
-        main.client = new Client(main.address, main.port);
+        main.client = new Client("127.0.0.1", 250);
 
         if (main.client.login("user1", "password", main.authServer1)) {
             System.out.println( main.client.getUsername() + " login success");

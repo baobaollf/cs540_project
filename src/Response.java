@@ -1,10 +1,11 @@
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Response object used to transmit information between Auth server and client
  */
 
-public class Response {
+public class Response implements Serializable {
 
     // other available clusters
     List<AuthServer> otherClusters;

@@ -1,7 +1,5 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.*;
 import java.net.Socket;
-import java.util.List;
 
 public class Client {
 
@@ -11,12 +9,14 @@ public class Client {
     private String password;
     private String line = "";
     // initialize socket and input output streams
-    private Socket socket            = null;
-    private DataInputStream  input   = null;
-    private DataOutputStream out     = null;
+    private Socket socketClient;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
     Client(String address, int port) {
         try {
-            socket = new Socket(address, port);
+            socketClient = new Socket(address, port);
+            in = new ObjectInputStream(socketClient.getInputStream());
+            out = new ObjectOutputStream(socketClient.getOutputStream());
             System.out.println("Connected to server");
         }
         catch (Exception e) {
@@ -24,15 +24,47 @@ public class Client {
         }
         while(!line.equals("quit")){
 
+            try{
+                System.out.println("client waiting!");
+                response = (Response)in.readObject();
+                System.out.println("received: " + response.key);
+            }
+            catch(Exception e){
+                System.out.println("Error!" + e);
+                break;
+
+            }
+        }
+        try {
+            socketClient.close();
+            in.close();
+            out.close();
+        }
+        catch (Exception e){
+            System.out.println("Error!" + e);
         }
 
 
-
     }
 
-    Client(String key, List<AuthServer> otherClusters) {
-        response = new Response(key, otherClusters);
+    public void send(Response request){
+        try {
+            out.writeObject(request);
+        }
+        catch (Exception e){
+            System.out.println("Error!" + e);
+        }
     }
+
+
+
+
+
+
+
+//    Client(String key, List<AuthServer> otherClusters) {
+//        response = new Response(key, otherClusters);
+//    }
 
     public boolean login(String username, String password, AuthServer defaultServer){
         this.defaultServer = defaultServer;
