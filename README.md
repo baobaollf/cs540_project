@@ -13,9 +13,10 @@ authentication servers and a client. To simulate real world
 conditions both servers need to be running before the client tries to
 connect.
 
-The prototype simulates a client connection to an authentication server. 
-The sharing of a security object between the servers, and the servers serving 
-content to the client.
+The prototype simulates the following:
+- A client connection to an authentication server.
+- The sharing of a security object between the servers.
+- The servers serving content to the client.
 
 ## Authors
 - Linfeng Li
