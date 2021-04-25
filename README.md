@@ -10,8 +10,12 @@ programs. Server, Server2 and Client.
 
 The code simulated the connection in a CDN cluster between two 
 authentication servers and a client. To simulate real world 
-conditions both server would be running before the client tries to
+conditions both servers need to be running before the client tries to
 connect.
+
+The prototype simulates a client connection to an authentication server. 
+The sharing of a security object between the servers, and the servers serving 
+content to the client.
 
 ## Authors
 - Linfeng Li
