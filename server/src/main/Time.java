@@ -9,6 +9,7 @@ public class Time implements Serializable {
     }
 
     public void updateTime() {
+        // 600000 is 10 minutes in milliseconds
         timeStamp = System.currentTimeMillis() + 600000;
     }
 

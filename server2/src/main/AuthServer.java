@@ -53,17 +53,6 @@ public class AuthServer extends Server {
                 receiveObject();
             }
 
-
-//            try {
-//                this.serverSocket = new ServerSocket(this.port);
-//                this.socket = serverSocket.accept();
-//                System.out.println("AS 2 connected @ " + IP + " " + port);
-//
-//            }catch (Exception e) {
-//                System.out.println("ERROR:" + e);
-//            }
-
-
             while (true) {
                 receiveObjectFromClient();
                 String commend = object.body.getBody();
@@ -227,6 +216,7 @@ public class AuthServer extends Server {
     public void logout(String username, String password) {
         if (credentialInDatabase(username, password)) {
             loggedInList.remove(username);
+            System.out.println(username + " is logged out and removed Security Object");
         }
     }
 
@@ -245,7 +235,7 @@ public class AuthServer extends Server {
             object = (SecurityObject) this.authIn.readObject();
             loggedInList.put(object.getHashKey(), object);
         } catch (Exception e) {
-            System.out.println("ERROR:" + e);
+            System.out.println("Disconnected from AS 1");
             authClientSocket.close();
         }
     }
