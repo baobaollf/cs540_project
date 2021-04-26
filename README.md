@@ -41,7 +41,8 @@ The prototype simulates the following:
 ```
 ./client
 ./server
-./server2 
+./server2
+project_documentation 
 README.md
  
 ```
