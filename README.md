@@ -14,7 +14,8 @@
 - - -
 The following code implements a high fidelity prototype of our
 CDN authorization framework idea  
-**"Easy connect"** The prototype is divided in 3 separates 
+**"Easy connect"**  
+The prototype is divided in 3 separates 
 java projects;
 1. server 
 2. server2 
