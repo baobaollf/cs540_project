@@ -37,7 +37,7 @@ The prototype implements the following:
   
 
 
-## File List
+## Project folder content
 - - -
 ```
 ./client
