@@ -13,9 +13,9 @@ import java.util.Map;
 public class AuthServer extends Server {
     private final int AUTH_SERVER_PORT = 8083;
     //       security key   object
-    private Map<String, SecurityObject> loggedInList;
+
     private List<ContentServer> contentServers;
-    private Map<String, String> users;
+    private Map<String, String> users;private Map<String, SecurityObject> loggedInList;
     private List<AuthServer> nearByAuthServers;
     SecurityObject object;
     ServerSocket serverSocket;
