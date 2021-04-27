@@ -1,3 +1,7 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +17,7 @@ public class SecurityObject implements Serializable {
     Body body;
     String serverIP;
     int contentSerialID;
-    // port
+    // a list of available authentication servers' port
     List<Integer> availableAuthServers;
 
 

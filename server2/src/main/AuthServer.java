@@ -1,6 +1,10 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
 
-import java.io.IOException;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -12,7 +16,8 @@ import java.util.Map;
 
 
 public class AuthServer extends Server {
-
+    private final int CLIENT_PORT = 8082;
+    private final String SOCKET_ADDRESS = "127.0.0.1";
     //       security key   object
     private Map<String, SecurityObject> loggedInList;
     private List<ContentServer> contentServers;
@@ -37,14 +42,16 @@ public class AuthServer extends Server {
         nearByAuthServers = new ArrayList<>();
 
     }
-
+    /**
+     * auth server driver function
+     */
     public void run() {
         try {
             // connect to AS1
             this.authClientSocket = new Socket(IP, port);
 
             // listen for client connection
-            Listener listener = new Listener("127.0.0.1", 8082, socket);
+            Listener listener = new Listener(SOCKET_ADDRESS, CLIENT_PORT, socket);
             Thread thread = new Thread(listener);
             thread.start();
 
@@ -71,62 +78,7 @@ public class AuthServer extends Server {
 
         } catch (Exception e) {
             System.out.println("ERROR: " + e);
-            System.out.println("error catched");
         }
-//        try {
-//            serverSocket = new ServerSocket(port);
-//            System.out.println("Server started waiting for client");
-//            socket = serverSocket.accept();
-//            System.out.println("Client connected!");
-//
-////            authServerSocket = new ServerSocket(nearByAuthServers.get(0).port);
-////            authSocket = authServerSocket.accept();
-//
-//        }catch (Exception e) {
-//            System.out.println("ERROR:" + e);
-//        }
-//        boolean isLogIn = false;
-//
-//        // receive content request
-//        while (true) {
-//            receiveObject();
-//            String commend = object.body.getBody();
-//
-//            if (commend.equals("LOGOUT")) {
-//                logout(object.username, object.password);
-//                System.out.println(object.clientIP + " is logged out");
-//                break;
-//            }
-//            switch (commend) {
-//                case "LOGIN":
-//                    while (!isLogIn) {
-//
-//                        boolean loginStatus = login(object);
-//                        if (loginStatus) {
-//                            object.serverIP = IP;
-//                            System.out.println("client connected to auth server at: " + object.serverIP);
-//                            object.body.setBody("LOGIN_SUCCESS");
-//                            object.availableAuthServers.add(port);
-//                            isLogIn = true;
-//                        } else {
-//                            System.out.println("username or password incorrect");
-//                            object.serverIP = getIP();
-//                            object.body.setBody("LOGIN_FAIL");
-//                        }
-//                        sendObject();
-//                    }
-//                    break;
-//                case "GET_CONTENT":
-//                    object = getContent(object);
-//                    sendObject();
-//                    break;
-//                case "SWITCH_AS":
-//                    // TODO
-//                    System.out.println("switch AS");
-//                    break;
-//            }
-//        }
-
     }
 
     public void addNearByAuthServer(AuthServer authServer) {
@@ -195,7 +147,7 @@ public class AuthServer extends Server {
      * we create a security object and put it in hashmap and notify nearby
      * CDN clusters through backbone
      *
-     * @param object SecurityObject
+     * @param object Security Object
      * @return login status
      */
     public boolean login(SecurityObject object) {
@@ -210,8 +162,8 @@ public class AuthServer extends Server {
     /**
      * with valid username and password, remove the user from logged in list
      *
-     * @param username client input
-     * @param password client input
+     * @param username client identifier
+     * @param password client password
      */
     public void logout(String username, String password) {
         if (credentialInDatabase(username, password)) {
@@ -219,7 +171,9 @@ public class AuthServer extends Server {
             System.out.println(username + " is logged out and removed Security Object");
         }
     }
-
+    /**
+     * send security object as output stream to connected auth server
+     */
     public void sendObject() {
         try {
             this.authOut = new ObjectOutputStream(this.authClientSocket.getOutputStream());
@@ -229,17 +183,30 @@ public class AuthServer extends Server {
         }
     }
 
-    public void receiveObject() throws IOException {
+
+    /**
+     * read from connected auth server through input stream
+     * and update security object
+     */
+    public void receiveObject() {
         try {
             this.authIn = new ObjectInputStream(this.authClientSocket.getInputStream());
             object = (SecurityObject) this.authIn.readObject();
             loggedInList.put(object.getHashKey(), object);
         } catch (Exception e) {
             System.out.println("Disconnected from AS 1");
-            authClientSocket.close();
+            try {
+                authClientSocket.close();
+            } catch (Exception e2) {
+                System.out.println("ERROR:" + e2);
+            }
         }
     }
 
+    /**
+     * send local security object to output stream
+     * and send to connected client
+     */
     public void sendObjectToClient() {
         try {
             this.out = new ObjectOutputStream(socket.getOutputStream());
@@ -249,6 +216,10 @@ public class AuthServer extends Server {
         }
     }
 
+    /**
+     * read from input stream from connected client
+     * and update local security object
+     */
     public void receiveObjectFromClient() {
         try {
             this.in = new ObjectInputStream(socket.getInputStream());

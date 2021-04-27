@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 public class AuthServer extends Server {
-
+    private final int AUTH_SERVER_PORT = 8083;
     //       security key   object
     private Map<String, SecurityObject> loggedInList;
     private List<ContentServer> contentServers;
@@ -37,10 +37,13 @@ public class AuthServer extends Server {
 
     }
 
+    /**
+     * auth server driver function
+     */
     public void run() {
         try {
             // connect to AS2
-            authServerSocket = new ServerSocket(8083);
+            authServerSocket = new ServerSocket(AUTH_SERVER_PORT);
             authSocket = authServerSocket.accept();
             System.out.println("Near by AS connected!");
 
@@ -50,8 +53,6 @@ public class AuthServer extends Server {
             socket = serverSocket.accept();
             System.out.println("Client connected!");
 
-//            authServerSocket = new ServerSocket(nearByAuthServers.get(0).port);
-//            authSocket = authServerSocket.accept();
 
         } catch (Exception e) {
             System.out.println("ERROR:" + e);
@@ -80,8 +81,7 @@ public class AuthServer extends Server {
                 break;
             }
             switch (commend) {
-                case "LOGIN":
-
+                case "LOGIN" -> {
                     boolean loginStatus = login(object);
                     if (loginStatus) {
                         object.serverIP = IP;
@@ -95,11 +95,11 @@ public class AuthServer extends Server {
                         object.body.setBody("LOGIN_FAIL");
                     }
                     sendObject();
-                    break;
-                case "GET_CONTENT":
+                }
+                case "GET_CONTENT" -> {
                     object = getContent(object);
                     sendObject();
-                    break;
+                }
             }
         }
 
@@ -162,7 +162,7 @@ public class AuthServer extends Server {
             object.body.setBody(contentServers.get(0).fetchContent(object.contentSerialID));
             object.contentSerialID++;
             sendObjectToAS();
-            // TODO notify nearby clusters through backbone that user is active
+            // notify nearby clusters through backbone that user is active
             return object;
         }
         object.body.setBody("login expired");
@@ -180,8 +180,7 @@ public class AuthServer extends Server {
     public boolean login(SecurityObject object) {
         if (credentialInDatabase(object.username, object.password)) {
             loggedInList.put(object.getHashKey(), object);
-
-            // TODO notify nearby clusters through backbone
+            // notify nearby clusters through backbone
             sendObjectToAS();
             return true;
         }
@@ -191,8 +190,8 @@ public class AuthServer extends Server {
     /**
      * with valid username and password, remove the user from logged in list
      *
-     * @param username client input
-     * @param password client input
+     * @param username client identifier
+     * @param password client password
      */
     public void logout(String username, String password) {
         if (credentialInDatabase(username, password)) {
@@ -202,6 +201,9 @@ public class AuthServer extends Server {
         }
     }
 
+    /**
+     * send security object as output stream to client
+     */
     public void sendObject() {
         try {
             this.out = new ObjectOutputStream(this.socket.getOutputStream());
@@ -211,6 +213,10 @@ public class AuthServer extends Server {
         }
     }
 
+    /**
+     * read from client through input stream
+     * and update security object
+     */
     public void receiveObject() {
         try {
             this.in = new ObjectInputStream(this.socket.getInputStream());
@@ -220,6 +226,10 @@ public class AuthServer extends Server {
         }
     }
 
+    /**
+     * send local security object to output stream
+     * and send to connected auth server
+     */
     public void sendObjectToAS() {
         try {
             this.authOut = new ObjectOutputStream(this.authSocket.getOutputStream());
@@ -229,6 +239,10 @@ public class AuthServer extends Server {
         }
     }
 
+    /**
+     * read from input stream from connected auth server
+     * and update local security object
+     */
     public void receiveObjectFromAS() {
         try {
             this.in = new ObjectInputStream(this.socket.getInputStream());

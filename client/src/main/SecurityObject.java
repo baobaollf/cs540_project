@@ -1,5 +1,8 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,17 +17,16 @@ public class SecurityObject implements Serializable {
     Body body;
     String serverIP;
     int contentSerialID;
-      // port
+    // a list of available authentication servers' port
     List<Integer> availableAuthServers;
 
 
     SecurityObject(String username, String password, String address) {
-        time = new Time();
-        this.hashKey = String.valueOf(time.timeStamp + username.hashCode() + password.hashCode());
+        this.time = new Time();
+        hashKey = String.valueOf(time.timeStamp + username.hashCode() + password.hashCode());
         this.username = username;
         this.password = password;
-
-        body = new Body();
+        this.body = new Body();
         this.serverIP = "";
         this.clientIP = address;
         this.availableAuthServers = new ArrayList<>();

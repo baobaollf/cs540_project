@@ -1,3 +1,7 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
 
 import java.io.*;
@@ -26,10 +30,15 @@ public class Client {
         }
     }
 
-
+    /**
+     * then user first time trying to connect to auth server
+     * obtain user username and password
+     * and verify is with auth server,
+     * repeat above step until authenticated.
+     * @throws IOException if connection failed
+     */
     public void login() throws IOException {
         while(!isLogin) {
-
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.print("Enter username ");
             username = reader.readLine();
@@ -48,6 +57,10 @@ public class Client {
         }
     }
 
+    /**
+     * populate security object body to indicate request purpose
+     * send request to server
+     */
     public void getContent(){
         object.body.setBody("GET_CONTENT");
         sendObject();
@@ -55,12 +68,16 @@ public class Client {
         System.out.println(object.body.getBody());
     }
 
+    /**
+     * called when user wants to switch to a different auth server
+     * first read from available auth server list and get its port number
+     * try to connect to this available auth server
+     */
     public void switchAS() {
         object.body.setBody("SWITCH_AS");
         sendObject();
         this.port = this.object.availableAuthServers.get(0);
         try {
-//            this.socketClient.close();
             this.socketClient = new Socket(address, port);
             getContent();
         } catch (Exception e) {
@@ -69,12 +86,21 @@ public class Client {
         sendObject();
     }
 
+    /**
+     * update the security object body
+     * and isLogin counter.
+     * Then send the object to server
+     */
     public void logout() {
         object.body.setBody("LOGOUT");
         this.isLogin = false;
         sendObject();
     }
 
+    /**
+     * convert security object to output stream
+     * and output to server
+     */
     public void sendObject() {
         try {
             this.out = new ObjectOutputStream(this.socketClient.getOutputStream());
@@ -84,6 +110,10 @@ public class Client {
         }
     }
 
+    /**
+     * read from server using input stream
+     * and update security object
+     */
     public void receiveObject() {
         try {
             this.in = new ObjectInputStream(this.socketClient.getInputStream());

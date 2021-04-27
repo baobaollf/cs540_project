@@ -1,6 +1,15 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
+
 package main;
+
 import java.io.Serializable;
 
+/*
+    Time object used to keep track of time
+ */
 public class Time implements Serializable {
     long timeStamp;
 
@@ -8,8 +17,8 @@ public class Time implements Serializable {
         updateTime();
     }
 
+    // 600,000 is 10 minutes in millisecond
     public void updateTime() {
-        // 600000 is 10 minutes in milliseconds
         timeStamp = System.currentTimeMillis() + 600000;
     }
 

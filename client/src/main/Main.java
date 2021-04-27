@@ -1,11 +1,19 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
+
 package main;
 
 import java.io.*;
-import java.net.Socket;
 
+/*
+    driver class to client side service.
+ */
 public class Main {
     private static String address;
     private static int port;
+
 
     public static void main(String[] args) throws IOException {
         address = "127.0.0.1";
@@ -17,13 +25,12 @@ public class Main {
         loggedInActions(client);
     }
 
-    /**
-     * 1: get content
-     * 2: switch AS
-     * 3: logout
-     * 4: exit
-     */
+
     private static void loggedInActions(Client client) throws IOException {
+//         * 1: get content
+//         * 2: switch AS
+//         * 3: logout
+
         while (true) {
             int input = getUserInput();
             if (input == 3) {

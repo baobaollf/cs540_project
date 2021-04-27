@@ -1,8 +1,15 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
 
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/*
+    threaded class to listen to client connection in a separate thread
+ */
 public class Listener implements Runnable{
 
     String address;

@@ -1,6 +1,10 @@
+/*
+  Created by Linfeng Li on 4/23/2021
+  University of Illinois at Chicago
+ */
 package main;
 
-import java.io.IOException;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -8,6 +12,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/*
+    driver class to server side first server service.
+ */
 public class Main {
 
     ServerSocket serverSocket;
