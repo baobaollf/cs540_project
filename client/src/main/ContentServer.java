@@ -22,6 +22,6 @@ public class ContentServer extends Server {
      * @return content corresponds to input id
      */
     public String fetchContent(int id) {
-        return content + id;
+        return "serving content from " + content + " with identifier " + id;
     }
 }

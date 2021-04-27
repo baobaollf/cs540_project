@@ -11,14 +11,10 @@ import java.io.*;
     driver class to client side service.
  */
 public class Main {
-    private static String address;
-    private static int port;
 
 
     public static void main(String[] args) throws IOException {
-        address = "127.0.0.1";
-        port = 8081;
-        Client client = new Client(address, port);
+        Client client = new Client("127.0.0.1", 8081);
 
         client.login();
 

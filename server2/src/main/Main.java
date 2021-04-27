@@ -16,19 +16,9 @@ import java.util.List;
  */
 public class Main {
 
-    Socket authServerSocket;
-
-    ServerSocket serverSocket;
-    Socket socket;
-
-    ObjectInputStream in;
-    ObjectOutputStream out;
-    SecurityObject object;
-    private int id = 0;
-
     public static void main(String[] args) throws Exception {
 
-        System.out.println("hello from main");
+        System.out.println("hello from auth server 2");
         System.out.println("initiating auth servers and populate its content servers");
         AuthServer authServer2 = new AuthServer("127.0.0.1", 8083);
 

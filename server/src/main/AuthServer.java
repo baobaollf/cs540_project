@@ -45,11 +45,11 @@ public class AuthServer extends Server {
             // connect to AS2
             authServerSocket = new ServerSocket(AUTH_SERVER_PORT);
             authSocket = authServerSocket.accept();
-            System.out.println("Near by AS connected!");
+            System.out.println("Near by auth server connected!");
 
 
             serverSocket = new ServerSocket(port);
-            System.out.println("Server started waiting for client");
+            System.out.println("Server started waiting for client to connect");
             socket = serverSocket.accept();
             System.out.println("Client connected!");
 
@@ -73,20 +73,21 @@ public class AuthServer extends Server {
                     socket.close();
                     System.out.println("closing client socket");
                     authSocket.close();
-                    System.out.println("closing AS socket");
+                    System.out.println("closing auth server socket");
                 } catch (Exception e) {
                     System.out.println("ERROR:" + e);
                 }
-                System.out.println("switch AS");
+                System.out.println("auth server switched");
                 break;
             }
             switch (commend) {
-                case "LOGIN" -> {
+                case "LOGIN": {
                     boolean loginStatus = login(object);
                     if (loginStatus) {
                         object.serverIP = IP;
                         System.out.println("client connected to auth server at: " + object.serverIP);
                         object.body.setBody("LOGIN_SUCCESS");
+
                         object.availableAuthServers.add(nearByAuthServers.get(0).port);
 
                     } else {
@@ -95,10 +96,12 @@ public class AuthServer extends Server {
                         object.body.setBody("LOGIN_FAIL");
                     }
                     sendObject();
+                    break;
                 }
-                case "GET_CONTENT" -> {
+                case "GET_CONTENT": {
                     object = getContent(object);
                     sendObject();
+                    break;
                 }
             }
         }
@@ -160,6 +163,7 @@ public class AuthServer extends Server {
     public SecurityObject getContent(SecurityObject object) {
         if (validate(object)) {
             object.body.setBody(contentServers.get(0).fetchContent(object.contentSerialID));
+            System.out.println(object.body.getBody());
             object.contentSerialID++;
             sendObjectToAS();
             // notify nearby clusters through backbone that user is active
@@ -196,8 +200,9 @@ public class AuthServer extends Server {
     public void logout(String username, String password) {
         if (credentialInDatabase(username, password)) {
             loggedInList.remove(username);
-            // TODO notify nearby clusters through backbone
-
+            // notify nearby clusters through backbone
+            System.out.println(username + " is logged out and Security Object removed");
+            sendObjectToAS();
         }
     }
 

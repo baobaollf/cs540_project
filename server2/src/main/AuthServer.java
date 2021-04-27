@@ -49,7 +49,7 @@ public class AuthServer extends Server {
         try {
             // connect to AS1
             this.authClientSocket = new Socket(IP, port);
-
+            System.out.println("connected with " + IP);
             // listen for client connection
             Listener listener = new Listener(SOCKET_ADDRESS, CLIENT_PORT, socket);
             Thread thread = new Thread(listener);
@@ -135,6 +135,7 @@ public class AuthServer extends Server {
     public SecurityObject getContent(SecurityObject object) {
         if (validate(object)) {
             object.body.setBody(contentServers.get(0).fetchContent(object.contentSerialID));
+            System.out.println(object.body.getBody());
             object.contentSerialID++;
             return object;
         }
@@ -168,7 +169,7 @@ public class AuthServer extends Server {
     public void logout(String username, String password) {
         if (credentialInDatabase(username, password)) {
             loggedInList.remove(username);
-            System.out.println(username + " is logged out and removed Security Object");
+            System.out.println(username + " is logged out and Security Object removed");
         }
     }
     /**
