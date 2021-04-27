@@ -40,9 +40,9 @@ The prototype implements the following:
 ## Project folder content
 - - -
 ```
-./client -> client project
-./server -> server project
-./server2 -> server2 project
+./client -> client project folder
+./server -> server project folder
+./server2 -> server2 project folder
 cs540_project.iml
 project_documentation 
 README.md
