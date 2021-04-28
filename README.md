@@ -47,6 +47,30 @@ cs540_project.iml
 project_documentation 
 README.md
 ```
+
+## How to run from command line
+- - -
+1. Clone github repository
+`git clone https://github.com/baobaollf/cs540_project.git`
+2. Open cs540_project folder
+`cd cs540_project`   
+3. Open server/src/main
+   `cd server/src/main`
+4. Compile
+`javac *.java`
+5. Go up one folder to server/src
+`cd ..`
+6. Run code
+`java main.Main`
+7. Open new terminal
+8. Go back to cs540_project folder 
+9. Open server2/src/main
+`cd server2/src/main`
+10. Repeat step 3 through 8
+11. Open client/src/main
+`cd client/src/main`
+12. Repeat step 3 through 8
+
 ## How to run routine on IntelliJ with Java 12
 - - -
 1. Open project server
