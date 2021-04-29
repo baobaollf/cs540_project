@@ -66,10 +66,10 @@ README.md
 8. Go back to cs540_project folder 
 9. Open server2/src/main
 `cd server2/src/main`
-10. Repeat step 3 through 8
+10. Repeat step 4 through 8
 11. Open client/src/main
 `cd client/src/main`
-12. Repeat step 3 through 8
+12. Repeat step 4 through 8
 
 ## How to run routine on IntelliJ with Java 12
 - - -
