@@ -16,9 +16,7 @@ public class Server {
         this.IP = IP;
         this.port = port;
     }
-    Server() {
 
-    }
 
     public String getIP() {
         return IP;

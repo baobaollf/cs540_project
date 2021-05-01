@@ -1,6 +1,6 @@
 package test;
 
-import main.Client;
+import main.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,8 +12,8 @@ import org.junit.Test;
 
 class BodyTest {
 
-    @Before
-    Client client = new Client("192.0.0.1" , 8081);
+//    @Before
+//
 
     @Test
     void getBody() {

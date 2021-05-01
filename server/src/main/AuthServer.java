@@ -15,7 +15,18 @@ public class AuthServer extends Server {
     //       security key   object
 
     private List<ContentServer> contentServers;
-    private Map<String, String> users;private Map<String, SecurityObject> loggedInList;
+
+    public Map<String, String> getUsers() {
+        return users;
+    }
+
+    private Map<String, String> users;
+    private Map<String, SecurityObject> loggedInList;
+
+    public List<AuthServer> getNearByAuthServers() {
+        return nearByAuthServers;
+    }
+
     private List<AuthServer> nearByAuthServers;
     SecurityObject object;
     ServerSocket serverSocket;
@@ -29,7 +40,7 @@ public class AuthServer extends Server {
     ObjectInputStream in;
     ObjectOutputStream out;
 
-    AuthServer(String IP, int port) {
+    public AuthServer(String IP, int port) {
         super(IP, port);
         users = new HashMap<>();
         loggedInList = new HashMap<>();
@@ -149,7 +160,7 @@ public class AuthServer extends Server {
      * @param password client input
      * @return `True` if username and password matches database.
      */
-    private boolean credentialInDatabase(String username, String password) {
+    public boolean credentialInDatabase(String username, String password) {
         return users.containsKey(username) && users.get(username).equals(password);
     }
 

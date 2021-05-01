@@ -12,7 +12,7 @@ public class ContentServer extends Server {
 
     String content;
 
-    ContentServer(String IP, int port) {
+    public ContentServer(String IP, int port) {
         super(IP, port);
     }
 
