@@ -1,15 +1,18 @@
 
 # Easy Connect
-- - -
+
 ## Authentication framework for content networks prototype 
 ## CS540 Spring 2021
-- - -
+
 ## Authors
-- - -
+
 - Linfeng Li
 - Joe Karime
 - Claudio Jimenez
 
+## Prototype code slides can be found at [Joe's slides](???)
+## Project documentation can be found at [Google Docs](https://docs.google.com/document/d/1WNN0oufbqCAFiISOD6adxGTJDJFcAy25TC9lBR0bhPI/edit?usp=sharing)
+## Prototype source code can be found at [Github](https://github.com/baobaollf/cs540_project.git)
 ## Introduction
 - - -
 The following code implements a high fidelity prototype of our
@@ -71,7 +74,7 @@ README.md
 `cd client/src/main`
 12. Repeat step 4 through 8
 
-## How to run routine on IntelliJ with Java 12
+## How to run routine on IntelliJ with Java 1.8
 - - -
 1. Open project server
 2. Open project server2
@@ -80,10 +83,8 @@ README.md
 4. Run **server2** Main class `/server2/src/main/Main.java`
 5. Run **client** Main class `/client/src/main/Main.java`  
 For detailed explanation of the functionality, see prototype code slides below
-- - - 
-## Prototype code slides can be found at [Joe's slides](???)
-## Project documentation can be found at [Google Docs](https://docs.google.com/document/d/1WNN0oufbqCAFiISOD6adxGTJDJFcAy25TC9lBR0bhPI/edit?usp=sharing)
-## Prototype source code can be found at [Github](https://github.com/baobaollf/cs540_project.git)
 
 
-- - -
+
+
+
