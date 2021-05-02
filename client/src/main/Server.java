@@ -8,8 +8,8 @@ package main;
  */
 public class Server {
 
-    String IP;
-    int port;
+    private String IP;
+    private int port;
 
     public Server(String IP, int port) {
         this.IP = IP;
