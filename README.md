@@ -73,6 +73,9 @@ README.md
 11. Open client/src/main
 `cd client/src/main`
 12. Repeat step 4 through 8
+13. For client program  
+    1.username = username  
+    2.password = password 
 
 ## How to run routine on IntelliJ with Java 1.8
 
