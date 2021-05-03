@@ -14,6 +14,7 @@ public class ContentServer extends Server {
 
     public ContentServer(String IP, int port) {
         super(IP, port);
+        this.content = "";
     }
 
     /**

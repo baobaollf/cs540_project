@@ -21,7 +21,7 @@ public class SecurityObject implements Serializable {
     List<Integer> availableAuthServers;
 
 
-    SecurityObject(String username, String password, String address) {
+    public SecurityObject(String username, String password, String address) {
         this.time = new Time();
         hashKey = String.valueOf(time.timeStamp + username.hashCode() + password.hashCode());
         this.username = username;
