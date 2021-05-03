@@ -1,9 +1,8 @@
 package test;
+import main.Body;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.*;
-import org.junit.Assert.*;
-import main.Body;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,21 +12,22 @@ import static org.junit.Assert.assertEquals;
  */
 public class BodyTest {
 
+    Body body;
     @Before
     public void init(){
-        Body body = new Body();
+        body = new Body();
         body.setBody("cs540");
     }
 
     @Test
     public void getBody(){
-//        assertEquals();
+        assertEquals("cs540", body.getBody());
     }
 
 
     @Test
     public void setBody() {
-
-//        assertEquals("cs540", body.getBody());
+        body.setBody("test");
+        assertEquals("test", body.getBody());
     }
 }

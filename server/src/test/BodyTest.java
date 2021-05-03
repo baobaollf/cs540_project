@@ -1,5 +1,9 @@
 package test;
 
+import main.Body;
+import org.junit.Before;
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 /*
@@ -8,11 +12,22 @@ import static org.junit.Assert.*;
  */
 public class BodyTest {
 
-    @org.junit.Test
-    public void getBody() {
+    Body body;
+    @Before
+    public void init(){
+        body = new Body();
+        body.setBody("cs540");
     }
 
-    @org.junit.Test
+    @Test
+    public void getBody(){
+        assertEquals("cs540", body.getBody());
+    }
+
+
+    @Test
     public void setBody() {
+        body.setBody("test");
+        assertEquals("test", body.getBody());
     }
 }

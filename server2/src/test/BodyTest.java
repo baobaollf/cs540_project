@@ -1,26 +1,34 @@
 package test;
 
-import main.*;
+import main.Body;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /*
- * Created by Linfeng Li on 04/27/21
+ * Created by Linfeng Li on 05/02/21
  * University of Illinois Chicago
  */
+public class BodyTest {
 
-
-class BodyTest {
-
-//    @Before
-//
-
-    @Test
-    void getBody() {
-
+    Body body;
+    @Before
+    public void init(){
+        body = new Body();
+        body.setBody("cs540");
     }
 
     @Test
-    void setBody() {
+    public void getBody(){
+        assertEquals("cs540", body.getBody());
     }
+
+
+    @Test
+    public void setBody() {
+        body.setBody("test");
+        assertEquals("test", body.getBody());
+    }
+
 }
