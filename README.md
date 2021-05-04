@@ -1,17 +1,20 @@
 
 # Easy Connect
-- - -
+
 ## Authentication framework for content networks prototype 
 ## CS540 Spring 2021
-- - -
+
 ## Authors
-- - -
+
 - Linfeng Li
 - Joe Karime
 - Claudio Jimenez
 
+## Prototype code slides can be found at [Slides](???)
+## Project documentation can be found at [Google Docs](https://docs.google.com/document/d/1WNN0oufbqCAFiISOD6adxGTJDJFcAy25TC9lBR0bhPI/edit?usp=sharing)
+## Prototype source code can be found at [Github](https://github.com/baobaollf/cs540_project.git)
 ## Introduction
-- - -
+
 The following code implements a high fidelity prototype of our
 CDN authorization framework idea  
 **"Easy connect"**  
@@ -38,7 +41,7 @@ The prototype implements the following:
 
 
 ## Project folder content
-- - -
+
 ```
 ./client -> client project folder
 ./server -> server project folder
@@ -49,7 +52,7 @@ README.md
 ```
 
 ## How to run from command line
-- - -
+
 1. Clone github repository
 `git clone https://github.com/baobaollf/cs540_project.git`
 2. Open cs540_project folder
@@ -70,20 +73,17 @@ README.md
 11. Open client/src/main
 `cd client/src/main`
 12. Repeat step 4 through 8
+13. For client program  
+    1.username = username  
+    2.password = password 
 
-## How to run routine on IntelliJ with Java 12
-- - -
+## How to run routine on IntelliJ with Java 1.8
+
 1. Open project server
 2. Open project server2
 3. Open project client   
 3. Run **server** Main class `/server/src/main/Main.java`
 4. Run **server2** Main class `/server2/src/main/Main.java`
 5. Run **client** Main class `/client/src/main/Main.java`  
-For detailed explanation of the functionality, see prototype code slides below
-- - - 
-## Prototype code slides can be found at [Joe's slides](???)
-## Project documentation can be found at [Google Docs](https://docs.google.com/document/d/1WNN0oufbqCAFiISOD6adxGTJDJFcAy25TC9lBR0bhPI/edit?usp=sharing)
-## Prototype source code can be found at [Github](https://github.com/baobaollf/cs540_project.git)
-
-
-- - -
+For detailed explanation of the functionality, see prototype code slides [prototype code slides](???)
+   
