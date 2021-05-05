@@ -86,4 +86,11 @@ README.md
 4. Run **server2** Main class `/server2/src/main/Main.java`
 5. Run **client** Main class `/client/src/main/Main.java`  
 For detailed explanation of the functionality, see prototype code slides [prototype code slides](???)
+
+## How to run the unit test
+
+1. Open the project in IntelliJ
+2. Right click on the `test` directroy under `${project_name}/src/test` and select `Run Tests in test` like so:
+![image](https://user-images.githubusercontent.com/55776365/117084650-bb1b9e80-ad15-11eb-99c4-0d127a2f5467.png)
+3. Note that all tests should pass. 
    
