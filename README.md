@@ -47,6 +47,8 @@ The prototype implements the following:
 ./server -> server project folder
 ./server2 -> server2 project folder
 cs540_project.iml
+CDN's Authorization Framework and Content.pdf
+Easy Connect.pdf
 README.md
 ```
 
