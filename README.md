@@ -10,7 +10,7 @@
 - Joe Karime
 - Claudio Jimenez
 
-## Prototype code slides can be found at [Slides](???)
+## Prototype code slides can be found at [Slides](https://docs.google.com/presentation/d/1YHCOAezUHp-Hslfa3Gxv58LtggFXRax3UlPbkbXw2qs/edit#slide=id.gd4b82e845a_0_50)
 ## Project documentation can be found at [Google Docs](https://docs.google.com/document/d/1WNN0oufbqCAFiISOD6adxGTJDJFcAy25TC9lBR0bhPI/edit?usp=sharing)
 ## Prototype source code can be found at [Github](https://github.com/baobaollf/cs540_project.git)
 ## Introduction
