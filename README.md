@@ -47,7 +47,6 @@ The prototype implements the following:
 ./server -> server project folder
 ./server2 -> server2 project folder
 cs540_project.iml
-project_documentation 
 README.md
 ```
 
